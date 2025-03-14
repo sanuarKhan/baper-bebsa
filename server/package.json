@@ -1,0 +1,21 @@
+{
+  "name": "bapar-babsa",
+  "version": "1.0.0",
+  "description": "this project intends to solve the accounting problem of my father business",
+  "main": "server.js",
+  "scripts": {
+    "dev": "nodemon server.js"
+  },
+  "keywords": [
+    "accounting"
+  ],
+  "author": "sanuar khan",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "moment": "^2.30.1",
+    "mongoose": "^8.12.1"
+  }
+}
