@@ -6,6 +6,7 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import axios from "axios";
 import moment from "moment";
 import { Link } from "react-router-dom";
+import AccountTableTitle from "@/components/AccountTableTittle";
 
 interface AccountEntry {
   id: string;
@@ -76,17 +77,17 @@ export default function TodaysAccount() {
         to="/"
         className="mb-4 inline-flex items-center text-primary hover:text-primary/80"
       >
-        <span>← Back to Home</span>
+        <span>← হোমে ফিরে যান</span>
       </Link>
       <Card className="mb-8">
         <CardHeader>
-          <CardTitle>Add New Account Entry</CardTitle>
+          <CardTitle>নতুন হিসাব যোগ করুন</CardTitle>
         </CardHeader>
         <CardContent>
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
               <Input
-                placeholder="Customer Name"
+                placeholder="গ্রাহকের নাম দিন"
                 value={customerName}
                 onChange={(e) => setCustomerName(e.target.value)}
                 required
@@ -95,7 +96,7 @@ export default function TodaysAccount() {
             <div>
               <Input
                 type="number"
-                placeholder="Item Amount"
+                placeholder="পণ্যের পরিমাণ দিন"
                 value={itemAmount}
                 onChange={(e) => setItemAmount(e.target.value)}
                 required
@@ -104,14 +105,14 @@ export default function TodaysAccount() {
             <div>
               <Input
                 type="number"
-                placeholder="Item Price"
+                placeholder="পণ্যের দাম দিন"
                 value={itemPrice}
                 onChange={(e) => setItemPrice(e.target.value)}
                 required
               />
             </div>
             <Button type="submit" className="w-full">
-              Add Entry
+              সংযোগ করুন
             </Button>
           </form>
         </CardContent>
@@ -119,29 +120,32 @@ export default function TodaysAccount() {
 
       <Card>
         <CardHeader>
-          <CardTitle>Today's Accounts</CardTitle>
+          <CardTitle>আজকের হিসাব</CardTitle>
         </CardHeader>
         <CardContent>
           <ScrollArea className="h-[400px] pr-4">
             <div className="space-y-4">
+              <AccountTableTitle />
               {entries.map((entry) => (
-                <div
-                  key={entry.id}
-                  className="flex items-center justify-between rounded-lg border p-4"
-                >
-                  <div>
-                    <h3 className="font-medium">{entry.customername}</h3>
-                    <p className="text-sm text-muted-foreground">
-                      Items: {entry.itemAmount} × {entry.itemPrice}
-                    </p>
-                  </div>
-                  <div className="text-right">
-                    <p className="font-medium">Total: ${entry.totalPrice}</p>
-                    <p className="text-sm text-muted-foreground">
-                      {moment(entry.createdAt).fromNow()}
-                    </p>
-                  </div>
-                </div>
+                <Card key={entry.id}>
+                  <CardContent className="flex justify-between items-center p-2 md:p-4 hover:bg-accent">
+                    <div className="text-xs md:text-base w-1/4 text-center">
+                      {entry.customername}
+                    </div>
+                    <div className="text-xs md:text-base w-1/4 text-center">
+                      {entry.itemAmount}
+                    </div>
+                    <div className="text-xs md:text-base w-1/4 text-center">
+                      {entry.itemPrice}
+                    </div>
+                    <div className="text-xs md:text-base w-1/4 text-center relative">
+                      {entry.totalPrice}
+                      <span className="text-xs text-muted-foreground mt-1 absolute end-0 top-7">
+                        Last updated: {moment(entry.createdAt).calendar()}
+                      </span>
+                    </div>
+                  </CardContent>
+                </Card>
               ))}
             </div>
           </ScrollArea>
