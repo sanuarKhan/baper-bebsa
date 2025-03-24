@@ -131,7 +131,7 @@ export default function Home() {
                         <div className="text-xs md:text-base w-1/4 text-center relative">
                           {account.totalPrice}
                           <span className="text-xs text-muted-foreground mt-1 absolute end-0 top-7">
-                            Last updated: {moment(account.updatedAt).fromNow()}
+                            সময়: {moment(account.updatedAt).fromNow()}
                           </span>
                         </div>
                       </CardContent>

@@ -141,7 +141,7 @@ export default function TodaysAccount() {
                     <div className="text-xs md:text-base w-1/4 text-center relative">
                       {entry.totalPrice}
                       <span className="text-xs text-muted-foreground mt-1 absolute end-0 top-7">
-                        Last updated: {moment(entry.createdAt).calendar()}
+                        সময়: {moment(entry.createdAt).calendar()}
                       </span>
                     </div>
                   </CardContent>
