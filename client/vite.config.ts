@@ -16,8 +16,8 @@ export default defineConfig(({ mode }) => ({
       "/api": {
         target:
           mode === "production"
-            ? "https://theislamic.onrender.com"
-            : "http://localhost:5050",
+            ? "https://baper-bebsa.onrender.com"
+            : "http://localhost:8080",
         changeOrigin: true,
         secure: false,
       },
