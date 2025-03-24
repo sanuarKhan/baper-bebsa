@@ -28,7 +28,7 @@ export default function TodaysAccount() {
 
     try {
       const response = await axios.post(
-        "http://localhost:8080/api/account-create",
+        "https://baper-bebsa.onrender.com/api/account-create",
         {
           customername: customerName,
           itemAmount: Number(itemAmount),
@@ -58,7 +58,7 @@ export default function TodaysAccount() {
         const todayDate = `${year}-${month}-${day}`;
 
         const response = await axios.get(
-          `http://localhost:8080/api/${todayDate}/accounts`
+          `https://baper-bebsa.onrender.com/api/${todayDate}/accounts`
         );
 
         setEntries(response.data);
